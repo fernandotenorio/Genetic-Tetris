@@ -41,7 +41,7 @@ public static void mutate(TetrisAgent agent, float probMutate)
 
    if (sort < probMutate)
    {
-	float noise = random.nextFloat() - random.nextFloat();
+	noise = random.nextFloat() - random.nextFloat();
       agent.genes[i] += noise;
    }
  }

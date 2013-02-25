@@ -16,7 +16,7 @@ public class TetrisAgent implements Comparable
   float sum = 0.0f;
   
   sum += genes[0] * BoardEvaluator.clearedRows(board);
-  sum -= genes[1] * (2 * board.length - y + BoardEvaluator.pileHeight(board) * 0.5f);
+  sum -= genes[1] * BoardEvaluator.pileHeight(board);
   sum -= genes[2] * BoardEvaluator.countSingleHoles(board);
   sum -= genes[3] * BoardEvaluator.countConnectedHoles(board);
   sum -= genes[4] * BoardEvaluator.blocksAboveHoles(board);
