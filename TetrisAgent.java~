@@ -5,8 +5,9 @@ import java.util.Random;
 
 public class TetrisAgent implements Comparable
 {
+ float[] genes = new float[6];
  //float[] genes = new float[]{ 0.6f, 0.3f, 0.05f, 0.1f, 0.1f, 0.1f, 0.2f};
- float[] genes = new float[]{ 0.95856917f, 0.08560386f, 0.9476838f, 0.58525276f, 0.0291457f, 0.18112998f, 0.17345366f};
+ //float[] genes = new float[]{ 0.95856917f, 0.08560386f, 0.9476838f, 0.58525276f, 0.0291457f, 0.18112998f, 0.17345366f};
  
  List<Integer> clearedRowsArray = Collections.synchronizedList(new ArrayList<Integer>());
  float fitness;
@@ -16,12 +17,14 @@ public class TetrisAgent implements Comparable
   float sum = 0.0f;
   
   sum += genes[0] * BoardEvaluator.clearedRows(board);
-  sum -= genes[1] * BoardEvaluator.pileHeight(board);
-  sum -= genes[2] * BoardEvaluator.countSingleHoles(board);
-  sum -= genes[3] * BoardEvaluator.countConnectedHoles(board);
-  sum -= genes[4] * BoardEvaluator.blocksAboveHoles(board);
-  sum -= genes[5] * BoardEvaluator.countWells(board);
-  sum -= genes[6] * BoardEvaluator.bumpiness(board);
+  sum += genes[1] * (2 * board.length - y + BoardEvaluator.pileHeight(board) * 0.5f);
+  sum += genes[2] * BoardEvaluator.countSingleHoles(board);
+ // sum += genes[3] * BoardEvaluator.countConnectedHoles(board);
+  sum += genes[3] * BoardEvaluator.rowTransitions(board);
+  sum += genes[4] * BoardEvaluator.colTransitions(board);
+  //sum += genes[4] * BoardEvaluator.blocksAboveHoles(board);
+  sum += genes[5] * BoardEvaluator.countWells(board);
+  //sum += genes[6] * BoardEvaluator.bumpiness(board);
   
   return sum;
  }
@@ -44,7 +47,7 @@ public class TetrisAgent implements Comparable
   Random random = new Random();
   
   for (int i = 0; i < agent.genes.length; i++)
-   agent.genes[i] = random.nextFloat();
+   agent.genes[i] = random.nextGaussian();
   
   return agent;
  }
