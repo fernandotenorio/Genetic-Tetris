@@ -23,7 +23,7 @@ public class MoveSearcher
     
     board.updateBoard(piece);
       
-    float eval = agent.eval(board.board);
+    float eval = agent.eval(board.board, piece.position.y);
     TetrisMove tempMove = new TetrisMove();
     tempMove.eval = eval;
     tempMove.position.x = piece.position.x;

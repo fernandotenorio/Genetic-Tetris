@@ -17,6 +17,45 @@ public class BoardEvaluator
   return cleared;
  }
  
+public static int rowTransitions(int[][] board)
+{
+  int columns = board[0].length;
+  int trans = 0;
+  
+  for(int y = 0; y < board.length - 1; y++) 
+  {
+   for(int x = 1; x < columns - 2; x++) 
+   {
+	int esq = board[y][x];
+     int dir = board[y][x + 1];
+     if ((esq == 0 && dir != 0) || (dir == 0 && esq != 0))
+		trans++;
+   }
+  }
+  return trans;
+
+}
+
+public static int colTransitions(int[][] board)
+{
+  int cols = board[0].length;
+  int trans = 0;
+  
+  for (int col = 1; col < cols - 1; col++)
+  {
+   for (int row = 0; row < board.length - 2; row++)
+   {
+	int acima = board[row][col];
+      int abaixo = board[row + 1][col];
+
+    if ((acima == 0 && abaixo != 0) || (abaixo == 0 && acima != 0))
+		trans++;
+
+   }
+  }
+	return trans;
+}
+
  public static int pileHeight(int[][] board)
  {
   int columns = board[0].length;
