@@ -68,6 +68,7 @@ public class AIGame extends GamePanel
   if (doneSignal != null)
    doneSignal.countDown();
    
+   //System.out.println(cleared);
  }
  
 }  //fim da classe AIGame
