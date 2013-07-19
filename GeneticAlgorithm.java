@@ -260,10 +260,10 @@ public static void mutate(TetrisAgent agent, float probMutate)
  
 public static void main (String[] args)
 	{
- 		int popSize = 20;
+ 		int popSize = 10;
  		int maxGens = 30000;
  		float probMutate = 0.1f;
- 		int gamesPerAgent = 5;
+ 		int gamesPerAgent = 4;
  		float eliteRate = 0.5f;
  
  		ArrayList<TetrisAgent[]> hist  = runGA(popSize, maxGens, probMutate, gamesPerAgent, eliteRate);

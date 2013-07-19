@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class TetrisAgent implements Comparable
 {
- float[] genes = new float[6];
+ float[] genes = new float[9];
  //float[] genes = new float[]{ 0.6f, 0.3f, 0.05f, 0.1f, 0.1f, 0.1f, 0.2f};
  //float[] genes = new float[]{ 0.95856917f, 0.08560386f, 0.9476838f, 0.58525276f, 0.0291457f, 0.18112998f, 0.17345366f};
  
@@ -19,11 +19,12 @@ public class TetrisAgent implements Comparable
   sum += genes[0] * BoardEvaluator.clearedRows(board);
   sum += genes[1] * (2 * board.length - y + BoardEvaluator.pileHeight(board) * 0.5f);
   sum += genes[2] * BoardEvaluator.countSingleHoles(board);
- // sum += genes[3] * BoardEvaluator.countConnectedHoles(board);
-  sum += genes[3] * BoardEvaluator.rowTransitions(board);
-  sum += genes[4] * BoardEvaluator.colTransitions(board);
-  //sum += genes[4] * BoardEvaluator.blocksAboveHoles(board);
-  sum += genes[5] * BoardEvaluator.countWells(board);
+  sum += genes[3] * BoardEvaluator.countConnectedHoles(board);
+  sum += genes[4] * BoardEvaluator.rowTransitions(board);
+  sum += genes[5] * BoardEvaluator.colTransitions(board);
+  sum += genes[6] * BoardEvaluator.blocksAboveHoles(board);
+  sum += genes[7] * BoardEvaluator.countWells(board);
+  sum += genes[8];
   //sum += genes[6] * BoardEvaluator.bumpiness(board);
   
   return sum;
