@@ -5,9 +5,11 @@ import java.util.Random;
 
 public class TetrisAgent implements Comparable
 {
- float[] genes = new float[9];
+ //float[] genes = new float[9];
  //float[] genes = new float[]{ 0.6f, 0.3f, 0.05f, 0.1f, 0.1f, 0.1f, 0.2f};
  //float[] genes = new float[]{ 0.95856917f, 0.08560386f, 0.9476838f, 0.58525276f, 0.0291457f, 0.18112998f, 0.17345366f};
+  float[] genes = new float[]{1.4578092f, -0.16867723f, -0.16530013f, -2.921182f, -0.9268366f, -0.32727492f, -0.34364402f, -0.15645486f, 0.66300744f};
+
  
  List<Integer> clearedRowsArray = Collections.synchronizedList(new ArrayList<Integer>());
  float fitness;
